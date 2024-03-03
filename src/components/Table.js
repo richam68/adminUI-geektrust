@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import TableRow from "./TableRow";
 import Edit from "./Edit";
+import TableHead from "./TableHead";
 
 function Table({
   filterData,
@@ -8,34 +9,16 @@ function Table({
   handleSelectRow,
   handleDelete,
   selectAllRow,
-  selectAllCheckbox,
+  handleSelectAllCheckbox,
 
   isEdit,
   handleEdit,
   editFormData,
   handleEditChange,
 }) {
-  // console.log(originalData.originalData);
-
   return (
     <table className="table">
-      <thead>
-        <tr>
-          <th>
-            <input
-              type="checkbox"
-              className="checkbox-input"
-              value={selectAllRow}
-              onChange={selectAllCheckbox}
-            />
-          </th>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
+    <TableHead selectAllRow={selectAllRow} handleSelectAllCheckbox={handleSelectAllCheckbox}/>
       <tbody>
         {filterData.length &&
           filterData.map((item) => (

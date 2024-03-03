@@ -1,37 +1,42 @@
 import React from "react";
+import TextInput from "./TextInput";
 
-function EditModal({ editFormData, handleEditChange }) {
+function Edit({ editFormData, handleEditChange }) {
+  console.log("editFormData", editFormData.name)
+  const inputField = [
+    {
+      name: "name",
+      placeholder: "Enter name",
+      type: "text",
+    },
+    {
+      name: "email",
+      placeholder: "Enter email",
+      type: "text",
+    },
+    {
+      name: "role",
+      placeholder: "Enter role",
+      type: "text",
+    },
+  ];
   return (
     <tr>
       <td></td>
-      <td>
-        <input
-          type="text"
-          placeholder="Enter name"
-          required
-          name="name"
-          value={editFormData.name}
-          onChange={handleEditChange}
-        />
-      </td>
-      <td>
-        <input
-          type="text"
-          required
-          name="email"
-          value={editFormData.email}
-          onChange={handleEditChange}
-        />
-      </td>
-      <td>
-        <input
-          type="text"
-          required
-          name="role"
-          value={editFormData.role}
-          onChange={handleEditChange}
-        />
-      </td>
+      <td>{editFormData.id}</td>
+      {inputField.map((field, index) => {
+        return (
+          <td key={index}>
+            <TextInput
+              type={field.type}
+              placeholder={field.placeholder}
+              name={field.name}
+              value={editFormData[field.name]}
+              onChange={handleEditChange}
+            />
+          </td>
+        );
+      })}
       <td>
         <button type="submit">Save</button>
       </td>
@@ -39,4 +44,4 @@ function EditModal({ editFormData, handleEditChange }) {
   );
 }
 
-export default EditModal;
+export default Edit;

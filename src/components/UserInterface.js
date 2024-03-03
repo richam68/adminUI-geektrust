@@ -67,6 +67,7 @@ function UserManagementInterface() {
   const endIndex = startIndex + itemPerPage;
   const currentUsers = filterData.slice(startIndex, endIndex);
 
+  //select checkboxes
   function handleSelectRow(id) {
     if (selectRows.includes(id)) {
       setSelectRows(selectRows.filter((rowId) => rowId !== id));
@@ -75,6 +76,7 @@ function UserManagementInterface() {
     }
   }
 
+  //function to change data in edit file
   const handleEditChange = (e) => {
     //console.log(e.target.value);
     const fieldName = e.target.getAttribute("name");
@@ -86,6 +88,7 @@ function UserManagementInterface() {
     setEditFormData(newFormData);
   };
 
+  //submit functionality after editing
   const handleEditFormSubmit = (e) => {
     e.preventDefault(e);
 
@@ -113,7 +116,7 @@ function UserManagementInterface() {
     setEditFormData(formValue);
   };
 
-  //delete checkboxes manually
+  //delete checkboxe manually
   function handleDelete(id) {
     let newData = [...originalData];
 
@@ -122,22 +125,28 @@ function UserManagementInterface() {
     setOriginalData(newData);
     setFilterData(newData);
 
-    toast.success("Deleted Successfully!");
-  }
-
-  //delete all selected
-  function handleDeleteSelected() {
-    let data = originalData.filter((row) => !selectRows.includes(row.id));
-
-    setOriginalData(data);
-    setFilterData(data);
-    setSelectAllRow([]);
     toast.success("Deleted Successfully!", {
       position: "top-center",
     });
   }
 
-  function selectAllCheckbox() {
+  //delete all selected
+  function handleDeleteSelected() {
+    console.log("delete selected");
+    let data = originalData.filter((row) => !selectRows.includes(row.id));
+
+    setOriginalData(data);
+    setFilterData(data);
+    setSelectRows([]);
+    // setSelectAllRow([]);
+
+    toast.success("Deleted Successfully!", {
+      position: "top-center",
+    });
+  }
+
+  //top checkbox functionality
+  function handleSelectAllCheckbox() {
     setSelectAllRow(!selectAllRow);
     setSelectRows(selectAllRow ? [] : currentUsers.map((row) => row.id));
   }
@@ -152,7 +161,7 @@ function UserManagementInterface() {
           selectRows={selectRows}
           handleSelectRow={handleSelectRow}
           selectAllRow={selectAllRow}
-          selectAllCheckbox={selectAllCheckbox}
+          handleSelectAllCheckbox={handleSelectAllCheckbox}
           handleDelete={handleDelete}
           isEdit={isEdit}
           handleEdit={handleEdit}
