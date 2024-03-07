@@ -23,11 +23,11 @@
   font-size: 16px;
   width: 97%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .search-input:focus {
-  outline: none; 
-  background-color: #e6e6e6; 
+  outline: none;
+  background-color: #e6e6e6;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -84,7 +84,8 @@
   cursor: pointer;
   position: absolute;
   left: 20px;
-  bottom: -120px;
+  bottom: auto;
+  margin-bottom: 10px;
 }
 .button-container {
   display: flex;
@@ -103,7 +104,7 @@
   font-size: 15px;
   cursor: pointer;
 }
-@media only screen and (max-width: 651px) {
+@media only screen and (max-width: 720px) {
   .delete-button {
     left: 120px;
     bottom: auto;
