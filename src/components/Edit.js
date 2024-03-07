@@ -2,7 +2,7 @@ import React from "react";
 import TextInput from "./TextInput";
 
 function Edit({ editFormData, handleEditChange }) {
-  console.log("editFormData", editFormData.name)
+  // console.log("editFormData", editFormData.name)
   const inputField = [
     {
       name: "name",

@@ -109,7 +109,6 @@ function UserManagementInterface() {
   };
 
   const handleEdit = (data) => {
-    // console.log("id", data);
     setIsEdit(data.id);
     // console.log(isEdit);
     const formValue = { name: data.name, email: data.email, role: data.role };
@@ -132,7 +131,7 @@ function UserManagementInterface() {
 
   //delete all selected
   function handleDeleteSelected() {
-    console.log("delete selected");
+    // console.log("delete selected");
     let data = originalData.filter((row) => !selectRows.includes(row.id));
 
     setOriginalData(data);
